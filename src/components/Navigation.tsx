@@ -23,7 +23,14 @@ const Navigation = () => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md py-4' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto flex items-center justify-between">
-        <a href="/" className="text-2xl font-serif font-bold">Strickland</a>
+        <a 
+          href="/" 
+          className={`text-2xl font-serif font-bold transition-colors duration-300 ${
+            isScrolled ? 'text-foreground' : 'text-white'
+          }`}
+        >
+          Strickland
+        </a>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
@@ -31,7 +38,9 @@ const Navigation = () => {
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium hover:text-primary/80 transition-colors"
+              className={`text-sm font-medium transition-colors duration-300 ${
+                isScrolled ? 'text-foreground hover:text-primary/80' : 'text-white hover:text-white/80'
+              }`}
             >
               {link.name}
             </a>
@@ -41,7 +50,11 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         <Sheet>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
+            <Button 
+              variant="ghost" 
+              size="icon"
+              className={`${!isScrolled && 'text-white hover:text-white/80'}`}
+            >
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
