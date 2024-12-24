@@ -35,7 +35,7 @@ const Index = () => {
       <section className="relative h-screen flex items-center justify-center">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2000"
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=3840"
             alt="Hero"
             className="w-full h-full object-cover"
           />
