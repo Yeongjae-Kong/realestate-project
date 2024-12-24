@@ -12,7 +12,7 @@ const properties = [
   {
     name: "Koya",
     type: "Restaurant",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80",
+    image: "https://popmenucloud.com/cdn-cgi/image/width=1920,height=1920,format=auto,fit=scale-down/qkcathmy/961aaf9d-d577-4cc5-b7af-4e2f3b34212d.JPG",
     description: "Modern French cuisine in an intimate setting.",
   },
   {
