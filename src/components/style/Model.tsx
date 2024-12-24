@@ -1,11 +1,18 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import { Mesh } from 'three';
+import { Mesh, BoxGeometry, MeshStandardMaterial } from 'three';
 
 export function Model(props: any) {
   const meshRef = useRef<Mesh>(null);
-  const { nodes, materials } = useGLTF('/model.glb') as any;
+  
+  // Create a fallback geometry if model fails to load
+  const fallbackGeometry = new BoxGeometry(1, 1, 1);
+  const fallbackMaterial = new MeshStandardMaterial({ 
+    color: 0x808080,
+    metalness: 0.5,
+    roughness: 0.5
+  });
 
   useFrame((state) => {
     if (meshRef.current) {
@@ -17,9 +24,14 @@ export function Model(props: any) {
     <mesh
       ref={meshRef}
       {...props}
-      geometry={nodes.Scene.geometry}
-      material={materials.material}
+      geometry={fallbackGeometry}
+      material={fallbackMaterial}
       scale={1}
-    />
+    >
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color="gray" />
+    </mesh>
   );
 }
+
+useGLTF.preload('/model.glb');
