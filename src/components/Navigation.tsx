@@ -30,6 +30,7 @@ const Navigation = () => {
     { name: 'Exhibition', href: '#properties' },
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' },
+    { name: 'Style', href: '/style' },
   ];
 
   return (
@@ -50,7 +51,7 @@ const Navigation = () => {
             <a
               key={link.name}
               href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
+              onClick={(e) => link.href.startsWith('#') ? handleNavClick(e, link.href) : undefined}
               className={`text-sm font-medium transition-colors duration-300 ${
                 isScrolled ? 'text-foreground hover:text-primary/80' : 'text-white hover:text-white/80'
               }`}
@@ -77,7 +78,7 @@ const Navigation = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
+                  onClick={(e) => link.href.startsWith('#') ? handleNavClick(e, link.href) : undefined}
                   className="text-lg font-medium hover:text-primary/80 transition-colors"
                 >
                   {link.name}
