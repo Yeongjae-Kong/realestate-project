@@ -27,7 +27,7 @@ const Navigation = () => {
   };
 
   const navLinks = [
-    { name: 'Restaurants', href: '#properties' },
+    { name: 'Exhibition', href: '#properties' },
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -41,7 +41,7 @@ const Navigation = () => {
             isScrolled ? 'text-foreground' : 'text-white'
           }`}
         >
-          Strickland
+          Ulrim
         </a>
         
         {/* Desktop Navigation */}

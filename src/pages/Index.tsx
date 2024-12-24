@@ -43,10 +43,10 @@ const Index = () => {
         </div>
         <div className="relative text-center text-white space-y-6 max-w-3xl px-4">
           <h1 className="text-4xl md:text-6xl font-serif font-bold animate-fade-in">
-            Strickland Hospitality Group
+            Make your own style
           </h1>
           <p className="text-xl md:text-2xl font-serif animate-slide-up">
-            Crafting exceptional experiences in hospitality
+            A platform where art and culture converge to inspire creativity
           </p>
         </div>
       </section>
@@ -55,7 +55,7 @@ const Index = () => {
       <section id="properties" className="py-20 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-serif text-center mb-12">
-            Our Restaurants
+            Exhibition
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {properties.map((property) => (
