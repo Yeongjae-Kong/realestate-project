@@ -48,12 +48,6 @@ const Index = () => {
           <p className="text-xl md:text-2xl font-serif animate-slide-up">
             Crafting exceptional experiences in hospitality
           </p>
-          <Button 
-            size="lg" 
-            className="animate-slide-up bg-white text-primary hover:bg-primary hover:text-white border-2 border-white transition-colors"
-          >
-            Explore Our Restaurants
-          </Button>
         </div>
       </section>
 
