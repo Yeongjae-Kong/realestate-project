@@ -4,20 +4,20 @@ import { Button } from "@/components/ui/button";
 
 const properties = [
   {
-    name: "The Grand Hotel",
-    type: "Luxury Hotel",
+    name: "The Sunrise House",
+    type: "Restaurant",
     image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80",
     description: "Experience unparalleled luxury in the heart of the city.",
   },
   {
-    name: "Bistro 73",
+    name: "Koya",
     type: "Restaurant",
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80",
     description: "Modern French cuisine in an intimate setting.",
   },
   {
-    name: "Sky Lounge",
-    type: "Rooftop Bar",
+    name: "Gazebo",
+    type: "Restaurant",
     image: "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&q=80",
     description: "Craft cocktails with breathtaking city views.",
   },
