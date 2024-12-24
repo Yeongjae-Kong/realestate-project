@@ -42,7 +42,7 @@ const Index = () => {
           <h1 className="text-4xl md:text-6xl font-serif font-bold animate-fade-in">
             Strickland Hospitality Group
           </h1>
-          <p className="text-xl md:text-2xl animate-slide-up">
+          <p className="text-xl md:text-2xl font-serif animate-slide-up">
             Crafting exceptional experiences in hospitality
           </p>
           <Button size="lg" className="animate-slide-up" variant="outline">
@@ -70,7 +70,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-serif mb-6">About Us</h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-muted-foreground mb-8 font-serif">
               Strickland Hospitality Group is dedicated to creating extraordinary experiences
               through our carefully curated collection of hotels, restaurants, and bars.
               Each property is thoughtfully designed to reflect its unique character while
@@ -87,7 +87,7 @@ const Index = () => {
       <section id="contact" className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-serif mb-6">Get in Touch</h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-lg mb-8 max-w-2xl mx-auto font-serif">
             Whether you're planning an event or interested in learning more about our
             properties, we'd love to hear from you.
           </p>
