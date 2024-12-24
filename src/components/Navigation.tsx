@@ -14,6 +14,18 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      });
+    }
+  };
+
   const navLinks = [
     { name: 'Restaurants', href: '#properties' },
     { name: 'About', href: '#about' },
@@ -38,6 +50,7 @@ const Navigation = () => {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className={`text-sm font-medium transition-colors duration-300 ${
                 isScrolled ? 'text-foreground hover:text-primary/80' : 'text-white hover:text-white/80'
               }`}
@@ -64,6 +77,7 @@ const Navigation = () => {
                 <a
                   key={link.name}
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="text-lg font-medium hover:text-primary/80 transition-colors"
                 >
                   {link.name}
