@@ -4,25 +4,25 @@ import { Button } from "@/components/ui/button";
 
 const properties = [
   {
-    name: "The Sunrise House",
-    type: "Restaurant",
-    image: "https://popmenucloud.com/cdn-cgi/image/width%3D1200%2Cheight%3D1200%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/wlyzkjvm/65418d1a-901f-42da-800b-c2ba3b69d1dc.JPG",
-    description: "Experience upscale breakfast and brunch in the heart of Montrose.",
-    url: "https://www.thesunrisehouse.com/reservations",
+    name: "Wave",
+    type: "Exhibition",
+    image: "/lovable-uploads/ff3c5312-2abc-47f5-a697-0f756ee91d6e.png",
+    description: "A mesmerizing exploration of ocean waves and their dynamic movement.",
+    url: "#",
   },
   {
-    name: "Koya",
-    type: "Restaurant",
-    image: "https://popmenucloud.com/cdn-cgi/image/width=1920,height=1920,format=auto,fit=scale-down/qkcathmy/961aaf9d-d577-4cc5-b7af-4e2f3b34212d.JPG",
-    description: "A unique fusion of exceptional dining and immersive entertainment.",
-    url: "https://www.koyahouston.com",
+    name: "Window",
+    type: "Exhibition",
+    image: "/lovable-uploads/266b0d6b-29a7-4f4d-b1f9-2cb87be07bf4.png",
+    description: "A powerful black and white portrait capturing human resilience.",
+    url: "#",
   },
   {
-    name: "Gazebo",
-    type: "Restaurant",
-    image: "https://popmenucloud.com/cdn-cgi/image/width=1920,height=1920,format=auto,fit=scale-down/edxqahiw/d8817ff8-4ff8-418a-bfbe-00fa0d182a2b.JPG",
-    description: "A refind dining experience featuring fresh seafood and flavorful Cajun dishes.",
-    url: "https://www.gazebohouston.com",
+    name: "Pearman Said",
+    type: "Exhibition",
+    image: "/lovable-uploads/5eb4aa63-7866-4ead-88fa-2acc4226817b.png",
+    description: "Contemporary art exhibition featuring abstract expressions.",
+    url: "#",
   },
 ];
 
@@ -35,7 +35,7 @@ const Index = () => {
       <section className="relative h-screen flex items-center justify-center">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1622021142947-da7dedc7c39a?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="/lovable-uploads/c6c84fa4-f1a0-45c5-a907-4fcadf27e8bf.png"
             alt="Hero"
             className="w-full h-full object-cover"
           />
