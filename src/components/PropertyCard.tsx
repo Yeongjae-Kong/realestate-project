@@ -5,11 +5,28 @@ interface PropertyCardProps {
   type: string;
   image: string;
   description: string;
+  url: string;
 }
 
-const PropertyCard = ({ name, type, image, description }: PropertyCardProps) => {
+const PropertyCard = ({ name, type, image, description, url }: PropertyCardProps) => {
+  const handleClick = () => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
-    <Card className="overflow-hidden group cursor-pointer">
+    <Card 
+      className="overflow-hidden group cursor-pointer" 
+      onClick={handleClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
+      tabIndex={0}
+      role="link"
+      aria-label={`Visit ${name}`}
+    >
       <CardContent className="p-0 relative">
         <div className="aspect-[4/3] overflow-hidden">
           <img

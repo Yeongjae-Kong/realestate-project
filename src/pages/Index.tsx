@@ -6,20 +6,23 @@ const properties = [
   {
     name: "The Sunrise House",
     type: "Restaurant",
-    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80",
-    description: "Experience unparalleled luxury in the heart of the city.",
+    image: "https://popmenucloud.com/cdn-cgi/image/width%3D1200%2Cheight%3D1200%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/wlyzkjvm/65418d1a-901f-42da-800b-c2ba3b69d1dc.JPG",
+    description: "Experience upscale breakfast and brunch in the heart of Montrose.",
+    url: "https://www.thesunrisehouse.com/reservations",
   },
   {
     name: "Koya",
     type: "Restaurant",
     image: "https://popmenucloud.com/cdn-cgi/image/width=1920,height=1920,format=auto,fit=scale-down/qkcathmy/961aaf9d-d577-4cc5-b7af-4e2f3b34212d.JPG",
-    description: "Modern French cuisine in an intimate setting.",
+    description: "A unique fusion of exceptional dining and immersive entertainment.",
+    url: "https://www.koyahouston.com",
   },
   {
     name: "Gazebo",
     type: "Restaurant",
-    image: "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&q=80",
-    description: "Craft cocktails with breathtaking city views.",
+    image: "https://popmenucloud.com/cdn-cgi/image/width=1920,height=1920,format=auto,fit=scale-down/edxqahiw/d8817ff8-4ff8-418a-bfbe-00fa0d182a2b.JPG",
+    description: "A refind dining experience featuring fresh seafood and flavorful Cajun dishes.",
+    url: "https://www.gazebohouston.com",
   },
 ];
 
@@ -79,9 +82,6 @@ const Index = () => {
               Each property is thoughtfully designed to reflect its unique character while
               maintaining our commitment to exceptional service and attention to detail.
             </p>
-            <Button variant="outline" size="lg">
-              Learn More
-            </Button>
           </div>
         </div>
       </section>
