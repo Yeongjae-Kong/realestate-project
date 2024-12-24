@@ -15,7 +15,7 @@ const Navigation = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Properties', href: '#properties' },
+    { name: 'Restaurants', href: '#properties' },
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' },
   ];
