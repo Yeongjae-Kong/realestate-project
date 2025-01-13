@@ -31,10 +31,10 @@ export const Canvas: React.FC<AppProps> = ({ position = [0, 0, 2.5], fov = 25 })
 );
 
 function Backdrop() {
-  const shadows = useRef<THREE.Group & { material?: THREE.Material }>(null);
+  const shadows = useRef<THREE.Group & { material?: THREE.MeshBasicMaterial }>(null);
 
-  useFrame((state, delta) => {
-    if (shadows.current?.material) {
+  useFrame((state: RootState & { color?: THREE.Color }, delta) => {
+    if (shadows.current?.material && state.color) {
       easing.dampC(
         shadows.current.material.color,
         state.color,
