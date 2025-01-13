@@ -1,5 +1,5 @@
 import { useRef, ReactNode } from 'react';
-import { Canvas as ThreeCanvas, useFrame } from '@react-three/fiber';
+import { Canvas as ThreeCanvas, useFrame, RootState } from '@react-three/fiber';
 import { useGLTF, useTexture, AccumulativeShadows, RandomizedLight, Decal, Environment, Center } from '@react-three/drei';
 import { easing } from 'maath';
 import { useSnapshot } from 'valtio';
@@ -31,12 +31,19 @@ export const Canvas: React.FC<AppProps> = ({ position = [0, 0, 2.5], fov = 25 })
 );
 
 function Backdrop() {
-  const shadows = useRef<THREE.Mesh>(null);
+  const shadows = useRef<AccumulativeShadows>(null);
+
   useFrame((state, delta) => {
-    if (shadows.current) {
-      easing.dampC(shadows.current.material.color, state.color, 0.25, delta);
+    if (shadows.current?.material) {
+      easing.dampC(
+        (shadows.current.material as THREE.Material & { color: THREE.Color }).color,
+        (state as unknown as { color: THREE.Color }).color,
+        0.25,
+        delta
+      );
     }
   });
+
   return (
     <AccumulativeShadows 
       ref={shadows} 
@@ -60,12 +67,14 @@ interface CameraRigProps {
 function CameraRig({ children }: CameraRigProps) {
   const group = useRef<THREE.Group>(null);
   const snap = useSnapshot(state);
+  
   useFrame((state, delta) => {
     if (group.current) {
       easing.damp3(state.camera.position, [snap.intro ? -state.viewport.width / 4 : 0, 0, 2], 0.25, delta);
       easing.dampE(group.current.rotation, [state.pointer.y / 10, -state.pointer.x / 5, 0], 0.25, delta);
     }
   });
+  
   return <group ref={group}>{children}</group>;
 }
 
@@ -73,11 +82,13 @@ function Shirt(props: JSX.IntrinsicElements['mesh']) {
   const snap = useSnapshot(state);
   const texture = useTexture(`/${snap.decal}.png`);
   const { nodes, materials } = useGLTF('/shirt_baked_collapsed.glb') as any;
+  
   useFrame((state, delta) => {
     if (materials.lambert1) {
       easing.dampC(materials.lambert1.color, snap.color, 0.25, delta);
     }
   });
+  
   return (
     <mesh 
       castShadow 

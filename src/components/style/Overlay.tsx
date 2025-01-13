@@ -12,6 +12,7 @@ export function Overlay() {
     animate: { x: 0, opacity: 1, transition: { ...transition, delay: 0 } },
     exit: { x: -100, opacity: 0, transition: { ...transition, delay: 0 } }
   };
+
   return (
     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
       <motion.header initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={transition}>
@@ -49,7 +50,7 @@ export function Overlay() {
                     Create your unique and exclusive shirt with our brand-new 3D customization tool. <strong>Unleash your imagination</strong> and define your
                     own style.
                   </p>
-                  <button style={{ background: snap.color }} onClick={() => (state.intro = false)}>
+                  <button style={{ backgroundColor: snap.color as string }} onClick={() => (state.intro = false)}>
                     CUSTOMIZE IT <AiOutlineHighlight size="1.3em" />
                   </button>
                 </motion.div>
@@ -72,7 +73,7 @@ function Customizer() {
     <div className="customizer">
       <div className="color-options">
         {snap.colors.map((color) => (
-          <div key={color} className={`circle`} style={{ background: color }} onClick={() => (state.color = color)}></div>
+          <div key={color} className={`circle`} style={{ backgroundColor: color }} onClick={() => (state.color = color)}></div>
         ))}
       </div>
       <div className="decals">
@@ -86,7 +87,7 @@ function Customizer() {
       </div>
       <button
         className="share"
-        style={{ background: snap.color }}
+        style={{ backgroundColor: snap.color as string }}
         onClick={() => {
           const link = document.createElement('a');
           link.setAttribute('download', 'canvas.png');
@@ -96,7 +97,7 @@ function Customizer() {
         DOWNLOAD
         <AiFillCamera size="1.3em" />
       </button>
-      <button className="exit" style={{ background: snap.color }} onClick={() => (state.intro = true)}>
+      <button className="exit" style={{ backgroundColor: snap.color as string }} onClick={() => (state.intro = true)}>
         GO BACK
         <AiOutlineArrowLeft size="1.3em" />
       </button>
