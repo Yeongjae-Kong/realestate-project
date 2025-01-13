@@ -71,10 +71,7 @@ const Index = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-serif mb-6">About Us</h2>
             <p className="text-lg text-muted-foreground mb-8 font-serif">
-              Strickland Hospitality Group is dedicated to creating extraordinary experiences
-              through our carefully curated collection of hotels, restaurants, and bars.
-              Each property is thoughtfully designed to reflect its unique character while
-              maintaining our commitment to exceptional service and attention to detail.
+            Ulrim is a startup that seeks to bring talented artists who have yet to become famous to the surface and offer their value to people. It collaborates with artists to create products and share pieces of their values. Users can follow and interact with the artists they want.
             </p>
           </div>
         </div>

@@ -1,11 +1,9 @@
-import { create } from 'zustand';
+import { proxy } from 'valtio';
 
-interface State {
-  current: string;
-  setCurrent: (current: string) => void;
-}
-
-export const useStore = create<State>((set) => ({
-  current: 'Style',
-  setCurrent: (current) => set({ current }),
-}));
+export const state = proxy({
+  intro: true,
+  color: '#ffffff',
+  decal: 'default',
+  colors: ['#ffffff', '#000000', '#ff0000'], // Example colors
+  decals: ['decal1', 'decal2', 'decal3'], // Example decals
+});
