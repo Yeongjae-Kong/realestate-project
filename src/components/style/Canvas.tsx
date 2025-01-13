@@ -31,7 +31,7 @@ export const Canvas: React.FC<AppProps> = ({ position = [0, 0, 2.5], fov = 25 })
 );
 
 function Backdrop() {
-  const shadows = useRef<AccumulativeShadows>(null);
+  const shadows = useRef<typeof AccumulativeShadows>(null);
 
   useFrame((state, delta) => {
     if (shadows.current?.material) {
