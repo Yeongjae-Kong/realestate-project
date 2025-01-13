@@ -31,13 +31,13 @@ export const Canvas: React.FC<AppProps> = ({ position = [0, 0, 2.5], fov = 25 })
 );
 
 function Backdrop() {
-  const shadows = useRef<typeof AccumulativeShadows>(null);
+  const shadows = useRef<THREE.Group & { material?: THREE.Material }>(null);
 
   useFrame((state, delta) => {
     if (shadows.current?.material) {
       easing.dampC(
-        (shadows.current.material as THREE.Material & { color: THREE.Color }).color,
-        (state as unknown as { color: THREE.Color }).color,
+        shadows.current.material.color,
+        state.color,
         0.25,
         delta
       );
@@ -46,7 +46,7 @@ function Backdrop() {
 
   return (
     <AccumulativeShadows 
-      ref={shadows} 
+      ref={shadows as any}
       temporal 
       frames={60} 
       alphaTest={0.85} 
