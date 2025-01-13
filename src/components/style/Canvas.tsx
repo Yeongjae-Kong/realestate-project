@@ -4,6 +4,7 @@ import { useGLTF, useTexture, AccumulativeShadows, RandomizedLight, Decal, Envir
 import { easing } from 'maath';
 import { useSnapshot } from 'valtio';
 import { state } from './store';
+import * as THREE from 'three';
 
 interface AppProps {
   position?: [number, number, number];
@@ -11,7 +12,13 @@ interface AppProps {
 }
 
 export const Canvas: React.FC<AppProps> = ({ position = [0, 0, 2.5], fov = 25 }) => (
-  <ThreeCanvas shadows camera={{ position, fov }} gl={{ preserveDrawingBuffer: true }} eventSource={document.getElementById('root') as HTMLElement} eventPrefix="client">
+  <ThreeCanvas 
+    shadows 
+    camera={{ position, fov }} 
+    gl={{ preserveDrawingBuffer: true }} 
+    eventSource={document.getElementById('root') as HTMLElement} 
+    eventPrefix="client"
+  >
     <ambientLight intensity={0.5} />
     <Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/potsdamer_platz_1k.hdr" />
     <CameraRig>
@@ -31,7 +38,15 @@ function Backdrop() {
     }
   });
   return (
-    <AccumulativeShadows ref={shadows} temporal frames={60} alphaTest={0.85} scale={10} rotation={[Math.PI / 2, 0, 0]} position={[0, 0, -0.14]}>
+    <AccumulativeShadows 
+      ref={shadows} 
+      temporal 
+      frames={60} 
+      alphaTest={0.85} 
+      scale={10} 
+      rotation={[Math.PI / 2, 0, 0]} 
+      position={[0, 0, -0.14]}
+    >
       <RandomizedLight amount={4} radius={9} intensity={0.55} ambient={0.25} position={[5, 5, -10]} />
       <RandomizedLight amount={4} radius={5} intensity={0.25} ambient={0.55} position={[-5, 5, -9]} />
     </AccumulativeShadows>
@@ -64,8 +79,21 @@ function Shirt(props: JSX.IntrinsicElements['mesh']) {
     }
   });
   return (
-    <mesh castShadow geometry={nodes.T_Shirt_male.geometry} material={materials.lambert1} material-roughness={1} {...props} dispose={null}>
-      <Decal position={[0, 0.04, 0.15]} rotation={[0, 0, 0]} scale={0.2} map={texture} map-anisotropy={16} />
+    <mesh 
+      castShadow 
+      geometry={nodes.T_Shirt_male.geometry} 
+      material={materials.lambert1} 
+      material-roughness={1} 
+      {...props} 
+      dispose={null}
+    >
+      <Decal 
+        position={[0, 0.04, 0.15]} 
+        rotation={[0, 0, 0]} 
+        scale={0.2} 
+        map={texture} 
+        map-anisotropy={16} 
+      />
     </mesh>
   );
 }
