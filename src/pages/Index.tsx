@@ -59,11 +59,19 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center">
         <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=3840"
-            alt="Hero"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
-          />
+          >
+            <source
+              src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-luxury-apartment-complex-5244/1080p.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="relative text-center text-white space-y-6 max-w-3xl px-4">
