@@ -27,9 +27,9 @@ const Navigation = () => {
   };
 
   const navLinks = [
-    { name: 'Exhibition', href: '#properties' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: '타입안내', href: '#properties' },
+    { name: '입지환경', href: '#location' },
+    { name: '방문예약', href: '#about' },
   ];
 
   return (
@@ -37,14 +37,14 @@ const Navigation = () => {
       <div className="container mx-auto flex items-center justify-between">
         <a 
           href="/" 
-          className={`text-2xl font-serif font-bold transition-colors duration-300 ${
+          className={`text-2xl font-bold transition-colors duration-300 ${
             isScrolled ? 'text-foreground' : 'text-white'
           }`}
+          style={{ fontFamily: 'Pretendard' }}
         >
-          Ulrim
+          Apartment
         </a>
         
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <a
@@ -54,13 +54,13 @@ const Navigation = () => {
               className={`text-sm font-medium transition-colors duration-300 ${
                 isScrolled ? 'text-foreground hover:text-primary/80' : 'text-white hover:text-white/80'
               }`}
+              style={{ fontFamily: 'Pretendard' }}
             >
               {link.name}
             </a>
           ))}
         </div>
 
-        {/* Mobile Navigation */}
         <Sheet>
           <SheetTrigger asChild className="md:hidden">
             <Button 
@@ -79,6 +79,7 @@ const Navigation = () => {
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className="text-lg font-medium hover:text-primary/80 transition-colors"
+                  style={{ fontFamily: 'Pretendard' }}
                 >
                   {link.name}
                 </a>
