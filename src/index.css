@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
 
 @layer base {
   :root {
@@ -55,10 +57,12 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Noto Sans KR', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
+    font-family: inherit;
   }
 }
 
@@ -90,4 +94,148 @@
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+.property-card {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* styles.css 또는 해당 컴포넌트의 CSS 파일에 추가 */
+.fade-in {
+  opacity: 0; /* 초기 상태: 투명 */
+  transform: translateY(10px); /* 약간 아래에서 시작 */
+  animation: fadeIn 1s forwards; /* 0.5초 동안 애니메이션 */
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1; /* 최종 상태: 불투명 */
+    transform: translateY(0); /* 원래 위치로 이동 */
+  }
+}
+
+.fade-in-left {
+    animation: fadeInLeft 2s forwards;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 1;
+        transform: translateX(10%); /* 오른쪽에서 시작 */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(1%); /* 원래 위치로 이동 */
+    }
+}
+.section1-tag {
+  display: flex;
+  justify-content: center; /* 중앙 정렬 */
+  align-items: center; /* 중앙 정렬 */
+  width: 10vw; /* 버튼 너비 증가 */
+  height: 6vh; /* 버튼 높이 증가 */
+  background-color: rgba(0, 31, 63, 0.9); /* 남색 */
+  color: white; /* 텍스트 색상 */
+  text-decoration: none; /* 밑줄 제거 */
+  font-size: 20px; /* 폰트 크기 조정 */
+  border-radius: 15px; /* 둥근 모서리 */
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2); /* 노란색 그림자 추가 */
+}
+
+@media (max-width: 767px) { /* 모바일 화면에서 숨기기 */
+  .section1-tag {
+    width: 20vw;
+    height: 5vh;
+    font-size: 16px;
+  }
+}
+
+/* src/index.css에 추가 */
+.floating-button {
+  position: fixed;
+  top: 50%;
+  right: 20px; /* 오른쪽에서 더 왼쪽으로 이동 */
+  transform: translateY(-50%);
+  z-index: 1000; /* 다른 요소 위에 표시 */
+  display: none; /* 기본적으로 숨김 */
+}
+
+.floating-button ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 배치 */
+  gap: 15px; /* 버튼 간격 */
+}
+
+.floating-button li {
+  display: flex;
+  flex-direction: column; /* 아이콘과 텍스트를 세로로 정렬 */
+  align-items: center; /* 중앙 정렬 */
+  justify-content: center; /* 세로 중앙 정렬 */
+  height: 100%; /* li의 높이를 100%로 설정 */
+}
+
+.floating-button li a {
+  display: flex;
+  justify-content: center; /* 중앙 정렬 */
+  align-items: center; /* 중앙 정렬 */
+  width: 70px; /* 버튼 너비 증가 */
+  height: 70px; /* 버튼 높이 증가 */
+  border-radius: 50%; /* 원형 버튼 */
+  background-color: #001f3f; /* 진한 남색 */
+  color: white; /* 텍스트 색상 */
+  text-decoration: none; /* 밑줄 제거 */
+  font-size: 18px; /* 폰트 크기 조정 */
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2); /* 노란색 그림자 추가 */
+}
+
+.floating-button li span {
+  margin-top: 5px; /* 버튼과 텍스트 간격 */
+  font-size: 14px; /* 텍스트 크기 조정 */
+  color: #001f3f; /* 텍스트 색상 변경 */
+  font-weight: bold
+}
+
+.floating-button li a svg {
+  width: 30px; /* 아이콘 크기 증가 */
+  height: 30px; /* 아이콘 크기 증가 */
+}
+
+/* Add this new CSS class for the circular background */
+.floating-button-circle {
+  position: fixed;
+  top: 33%;
+  right: 50px; /* Adjust as needed */
+  transform: translateY(-50%);
+  width: 110px; /* Adjust the size of the circle */
+  height: 500px; /* Adjust the size of the circle */
+  border-radius: 50px; /* Make it circular */
+  background-color: rgba(0, 31, 63, 0.2); /* Semi-transparent background */
+  z-index: 999; /* Lower than the buttons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2); /* 노란색 그림자 추가 */
+}
+
+@media (min-width: 768px) { /* 컴퓨터 화면에서만 보이도록 설정 */
+  .floating-button {
+    display: block; /* 보이도록 설정 */
+  }
+
+  .floating-button-circle {
+    display: flex; /* 보이도록 설정 */
+  }
+}
+
+@media (max-width: 767px) { /* 모바일 화면에서 숨기기 */
+  .floating-button-circle {
+    display: none; /* 숨기기 */
+  }
+}
+
+html {
+  scroll-behavior: smooth;
 }

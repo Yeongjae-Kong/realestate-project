@@ -40,3 +40,34 @@
 .read-the-docs {
   color: #888;
 }
+
+.floating-button {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  background-color: #001f3f; /* 진한 남색 */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 1000; /* 이 값을 높여보세요 */
+  display: none; /* 기본적으로 숨김 */
+}
+
+.floating-button ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.floating-button li {
+  margin: 10px 0;
+}
+
+@media (min-width: 768px) { /* 컴퓨터 화면에서만 보이도록 설정 */
+  .floating-button {
+    display: block; /* 보이도록 설정 */
+  }
+}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,8 +28,8 @@ const Navigation = () => {
   };
 
   const navLinks = [
-    { name: '타입안내', href: '#properties' },
-    { name: '입지환경', href: '#location' },
+    { name: '단지안내', href: '/properties' },
+    { name: '세대안내', href: '/location' },
     { name: '방문예약', href: '#about' },
   ];
 
@@ -42,22 +43,21 @@ const Navigation = () => {
           }`}
           style={{ fontFamily: 'Pretendard' }}
         >
-          Apartment
+          힐스테이트 도안리버파크
         </a>
         
         <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <a
+            <Link // <a> 대신 <Link> 사용
               key={link.name}
-              href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
+              to={link.href} // href 대신 to 사용
               className={`text-sm font-medium transition-colors duration-300 ${
                 isScrolled ? 'text-foreground hover:text-primary/80' : 'text-white hover:text-white/80'
               }`}
               style={{ fontFamily: 'Pretendard' }}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
 
