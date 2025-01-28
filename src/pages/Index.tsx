@@ -332,9 +332,9 @@ const Index = () => {
           조감도
         </motion.div>
         {/* Image Slider Section */}
-        <section id="slider" className={`py-40 ${isFadeIn ? 'fade-in' : 'opacity-0'}`}>
+        <section id="slider" className={`py-40 ${isFadeIn ? 'fade-in' : 'opacity-0'}`} style={{ overflow: 'hidden' }}>
           <div className="container mx-auto px-4">
-            <div className="relative h-[420px] max-w-6xl mx-auto overflow-visible">
+            <div className="relative h-[420px] max-w-full mx-auto overflow-visible">
               <div className="absolute w-full">
                 {[-1, 0, 1].map((offset) => {
                   const slideIndex = getSlideIndex(currentIndex + offset);
@@ -342,9 +342,9 @@ const Index = () => {
                     <div
                       key={slideIndex}
                       className={`absolute h-[420px] transition-all duration-300 ease-in-out
-                        ${offset === -1 ? 'left-[-25%] w-[50%]' : ''}
+                        ${offset === -1 ? 'left-[-25%] w-[50%]' : ''} 
                         ${offset === 0 ? 'left-[22.5%] w-[55%] z-10' : ''} 
-                        ${offset === 1 ? 'left-[75%] w-[50%]' : ''}
+                        ${offset === 1 ? 'left-[75%] w-[50%]' : ''} 
                         hover:brightness-110 cursor-pointer`}
                       style={{
                         transform: `

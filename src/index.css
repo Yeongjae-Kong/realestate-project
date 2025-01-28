@@ -239,3 +239,15 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Prevent horizontal scrolling */
+html, body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100%; /* Ensure full width */
+}
+
+/* Optional: Ensure all containers are full width */
+.container {
+    width: 100%; /* Ensure containers do not exceed the viewport width */
+    max-width: 100%; /* Prevent exceeding the maximum width */
+}
