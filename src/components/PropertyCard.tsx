@@ -10,7 +10,6 @@ interface PropertyCardProps {
 
 const PropertyCard = ({ name, type, image, description, url }: PropertyCardProps) => {
   const handleClick = () => {
-    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (

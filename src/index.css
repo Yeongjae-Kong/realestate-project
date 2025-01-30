@@ -236,6 +236,89 @@
   }
 }
 
+/* popup */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  animation: slideInFromLeft 0.5s ease-out forwards;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 100%;
+  padding: 10px;
+}
+
+.popup img {
+  width: 100%;
+  height: auto;
+}
+
+.hide-button {
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust to position the button outside the popup */
+  transform: translateY(-50%);
+  width: 40px;
+  height: 150px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: black;
+  writing-mode: vertical-rl; /* Vertical text */
+}
+
+.expand-button {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 150px;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.expand-button span {
+  writing-mode: vertical-rl;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .popup {
+    width: 80%;
+  }
+}
 html {
   scroll-behavior: smooth;
 }
@@ -244,10 +327,4 @@ html {
 html, body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
     width: 100%; /* Ensure full width */
-}
-
-/* Optional: Ensure all containers are full width */
-.container {
-    width: 100%; /* Ensure containers do not exceed the viewport width */
-    max-width: 100%; /* Prevent exceeding the maximum width */
 }

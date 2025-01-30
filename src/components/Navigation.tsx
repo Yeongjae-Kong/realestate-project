@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,22 +16,10 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest'
-      });
-    }
-  };
-
   const navLinks = [
     { name: '단지안내', href: '/properties' },
     { name: '세대안내', href: '/location' },
-    { name: '방문예약', href: '#about' },
+    { name: '방문예약', href: '/reservation' },
   ];
 
   return (
@@ -74,15 +63,15 @@ const Navigation = () => {
           <SheetContent>
             <div className="flex flex-col space-y-4 mt-8">
               {navLinks.map((link) => (
-                <a
+                <Link // Use Link instead of a
                   key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
+                  to={link.href} // Use to instead of href
+                  onClick={() => setIsOpen(false)} // Close the sheet on click
                   className="text-lg font-medium hover:text-primary/80 transition-colors"
                   style={{ fontFamily: 'Pretendard' }}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </div>
           </SheetContent>

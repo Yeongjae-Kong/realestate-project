@@ -55,6 +55,8 @@ const Index = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [isPrivacyPolicyVisible, setIsPrivacyPolicyVisible] = useState(false); // State for privacy policy visibility
   const [isPopupVisible, setIsPopupVisible] = useState(false); // State for popup visibility
+  const [isRectangleVisible, setIsRectangleVisible] = useState(false);
+
 
   const images = [
     '/images/slider1.png',
@@ -223,6 +225,32 @@ const Index = () => {
     };
   }, []);
 
+  // popup
+  useEffect(() => {
+    const handleScroll = () => {
+      const element = document.getElementById('slider');
+      if (element && !isRectangleVisible) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+          setIsPopupVisible(true);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isRectangleVisible]);
+
+  const closePopup = () => {
+    setIsPopupVisible(false);
+    setIsRectangleVisible(true);
+  };
+
+  const openPopup = () => {
+    setIsPopupVisible(true);
+    setIsRectangleVisible(false);
+  };
+
   const handleCardClick = (imageSrc: string) => {
     setSelectedImage(imageSrc);
     setIsModalOpen(true);
@@ -271,6 +299,13 @@ const Index = () => {
     if (e.key === 'Enter') {
       handleAddressSearch(); // Call the address search function when Enter is pressed
     }
+  };
+
+  const handleFloatingButtonClick = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth', // Smooth scrolling effect
+    });
   };
 
   return (
@@ -391,6 +426,19 @@ const Index = () => {
           </div>
         </section>
       </section>
+
+      {isPopupVisible && (
+        <div className="popup">
+          <button className="hide-button" onClick={closePopup}>닫기</button>
+          <img src="/images/popup.png" alt="Popup" />
+        </div>
+      )}
+
+      {isRectangleVisible && (
+        <div className="expand-button" onClick={openPopup}>
+          <span>POPUP</span>
+        </div>
+      )}
 
       <section id="slider2" className="relative h-screen flex items-center justify-center">
         <div className="absolute inset-0">
@@ -598,7 +646,7 @@ const Index = () => {
               <span>세대안내</span>
             </li>
             <li>
-              <a href="#about" className="text-white">
+              <a href="#about" className="text-white" onClick={handleFloatingButtonClick}>
                 <FaCalendarAlt />
               </a>
               <span>방문예약</span>

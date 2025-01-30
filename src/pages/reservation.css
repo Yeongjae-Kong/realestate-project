@@ -1,0 +1,11 @@
+.scale-container {
+  transform: scale(1);
+  transform-origin: top;
+}
+
+@media (min-width: 768px) {
+  .scale-container {
+      transform: scale(1.2);
+      transform-origin: top;
+  }
+}
