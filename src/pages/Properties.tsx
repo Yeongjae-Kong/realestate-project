@@ -19,10 +19,9 @@ const Properties = () => {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source
-              src="/videos/background.mp4"
-              type="video/mp4"
-            />
+            <source src="/videos/background.webm" type="video/webm" />
+            <source src="/videos/background.mp4" type="video/mp4" />
+            {/* 브라우저에서 동영상 지원 하지 않을 시 */}
             Your browser does not support the video tag.
           </video>
           <div className="absolute inset-0 bg-black/40" />

@@ -172,10 +172,10 @@ const Index = () => {
   };
 
   const handleScroll3 = () => {
-    const element = document.getElementById('section3'); // "section2" 섹션의 ID를 사용, 해당 위치에 스크롤이 도착하면 동작
+    const element = document.getElementById('map'); // "section2" 섹션의 ID를 사용, 해당 위치에 스크롤이 도착하면 동작
     if (element) {
       const rect = element.getBoundingClientRect();
-      if (rect.top < window.innerHeight-600 && rect.bottom >= 0) {
+      if (rect.top < window.innerHeight && rect.bottom >= 0) {
         setIsSection3Visible(true); // Floating button visible
       } else {
         setIsSection3Visible(false); // Floating button hidden
@@ -321,10 +321,8 @@ const Index = () => {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source
-              src="/videos/background.mp4"
-              type="video/mp4"
-            />
+            <source src="/videos/background.webm" type="video/webm" />
+            <source src="/videos/background.mp4" type="video/mp4" />
             {/* 브라우저에서 동영상 지원 하지 않을 시 */}
             Your browser does not support the video tag.
           </video>
@@ -446,10 +444,8 @@ const Index = () => {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source
-              src="/videos/interior.mp4"
-              type="video/mp4"
-            />
+            <source src="/videos/interior.webm" type="video/webm" />
+            <source src="/videos/interior.mp4" type="video/mp4" />
             {/* 브라우저에서 동영상 지원 하지 않을 시 */}
             Your browser does not support the video tag.
           </video>
@@ -524,6 +520,7 @@ const Index = () => {
               </p>
             </div>
             <motion.div
+              id = "map"
               className="rounded-lg overflow-hidden shadow-xl"
               initial={{ opacity: 0, x: 40 }} // 오른쪽에서 시작
               animate={IsSection3Visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }} // 애니메이션
