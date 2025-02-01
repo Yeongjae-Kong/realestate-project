@@ -428,7 +428,7 @@ const Index = () => {
       {isPopupVisible && (
         <div className="popup">
           <button className="hide-button" onClick={closePopup}>닫기</button>
-          <LazyLoadImage src="/images/popup.png" alt="Popup" />
+          <LazyLoadImage src="/images/popup.png" alt="Popup" loading="eager" />
         </div>
       )}
 
