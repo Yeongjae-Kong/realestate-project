@@ -8,6 +8,9 @@ import { motion } from 'framer-motion';
 import { Link } from "react-router-dom";
 import { FaHome, FaBuilding, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 import '../index.css'; // Ensure this is imported if not already
+import {LazyLoadImage} from 'react-lazy-load-image-component';
+
+
 
 const properties = [
   {
@@ -388,7 +391,7 @@ const Index = () => {
                         boxShadow: '0 4px 15px rgba(255, 215, 0, 0.2)', // 기본 황금색 그림자
                       }}
                     >
-                      <img
+                      <LazyLoadImage
                         src={images[slideIndex]}
                         alt={`Slide ${slideIndex + 1}`}
                         className={`w-full h-full object-cover rounded-lg shadow-lg ${isVisible ? 'fade-in' : ''}`}
@@ -430,7 +433,7 @@ const Index = () => {
       {isPopupVisible && (
         <div className="popup">
           <button className="hide-button" onClick={closePopup}>닫기</button>
-          <img src="/images/popup.png" alt="Popup" />
+          <LazyLoadImage src="/images/popup.png" alt="Popup" />
         </div>
       )}
 
@@ -532,7 +535,7 @@ const Index = () => {
               animate={IsSection3Visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }} // 애니메이션
               transition={{ duration: 1.5 }} // 애니메이션 지속 시간
             >
-              <img
+              <LazyLoadImage
                 id="your-image-id"
                 src="/images/map.png"
                 alt="Location"
@@ -659,7 +662,7 @@ const Index = () => {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
           <div className="relative">
-            <img src={selectedImage} alt="Expanded view" className="max-w-full max-h-full" />
+            <LazyLoadImage src={selectedImage} alt="Expanded view" className="max-w-full max-h-full" />
             <button onClick={closeModal} className="absolute top-0 right-3 m-4 text-black text-4xl">&times;</button>
           </div>
         </div>
