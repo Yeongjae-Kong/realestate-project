@@ -11,7 +11,6 @@ import '../index.css'; // Ensure this is imported if not already
 import {LazyLoadImage} from 'react-lazy-load-image-component';
 
 
-
 const properties = [
   {
     name: "84A 타입",
@@ -68,7 +67,7 @@ const Index = () => {
     '/images/slider4.png'
   ];
 
-  // type section fadein
+  // section fadein
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -211,24 +210,25 @@ const Index = () => {
       window.removeEventListener('scroll', handleScroll3);
     };
   }, []);
-  // section1 글 애니메이션
+
+  // section 글 애니메이션
   useEffect(() => {
     const timeouts = fadeInElements.map((_, index) => {
       return setTimeout(() => {
         setFadeInElements((prev) => {
           const newFadeIn = [...prev];
-          newFadeIn[index] = true; // Set the current index to true for fade-in
+          newFadeIn[index] = true; // 현재 index card fade-in 설정
           return newFadeIn;
         });
-      }, 800 + index * 300); // 0.6 seconds interval
+      }, 800 + index * 300); // 0.3 seconds interval
     });
 
     return () => {
-      timeouts.forEach((timeout) => clearTimeout(timeout)); // Clear timeouts on cleanup
+      timeouts.forEach((timeout) => clearTimeout(timeout)); // Clear timeout
     };
   }, []);
 
-  // popup
+  // popup 애니메이션
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById('slider');
@@ -272,11 +272,12 @@ const Index = () => {
     return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 정리
   }, []);
 
+  // 방문예약 주소 api
   const handleAddressSearch = () => {
     new window.daum.Postcode({
       oncomplete: function(data) {
         // 사용자가 선택한 주소 정보를 address 상태에 저장
-        const fullAddress = data.address; // 기본 주소
+        const fullAddress = data.address;
         setAddress(fullAddress);
       },
     }).open();
@@ -425,12 +426,12 @@ const Index = () => {
         </section>
       </section>
 
-      {isPopupVisible && (
-        <div className="popup">
-          <button className="hide-button" onClick={closePopup}>닫기</button>
-          <LazyLoadImage src="/images/popup.png" alt="Popup" loading="eager" />
-        </div>
-      )}
+      
+
+      <div className={`popup ${isPopupVisible ? "show" : ""}`}>
+        <button className="hide-button" onClick={closePopup}>닫기</button>
+        <LazyLoadImage src="/images/popup.png" alt="Popup" />
+      </div>
 
       {isRectangleVisible && (
         <div className="expand-button" onClick={openPopup}>
@@ -541,7 +542,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Visit Reservation Section */}
+      {/* 방문예약 Section */}
       <section id="section4" className="py-60 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-xl mx-auto text-center">
@@ -621,7 +622,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* 우측 Floating Buttons */}
+      {/* 우측 Floating Button */}
       <div className={`floating-button-circle ${isFloatingButtonVisible ? 'fade-in' : 'opacity-0'}`} style={{ transition: 'opacity 1.5s' }}>
         <div className="floating-button">
           <ul>

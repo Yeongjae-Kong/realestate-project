@@ -236,42 +236,32 @@
   }
 }
 
-/* popup */
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
+/* 팝업 기본 스타일 */
 .popup {
   position: fixed;
   bottom: 0px;
   left: 0;
   transform: translateY(-50%);
-  animation: slideInFromLeft 0.5s ease-out forwards;
   z-index: 1000;
   background-color: white;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   max-width: 100%;
   padding: 10px;
+  transition: transform 1s ease-in-out, opacity 0.5s ease-in-out;
+  
+  /* 기본적으로 숨김 (애니메이션 전 이미지 렌더링) */
+  transform: translateX(-30%);
+  opacity: 0;
 }
 
+/* 팝업이 보일 때 */
+.popup.show {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 팝업 내부 이미지 (항상 로딩) */
 .popup img {
   width: 100%;
   height: auto;
