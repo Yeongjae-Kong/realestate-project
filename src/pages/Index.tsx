@@ -175,7 +175,7 @@ const Index = () => {
     const element = document.getElementById('section3'); // "section2" 섹션의 ID를 사용, 해당 위치에 스크롤이 도착하면 동작
     if (element) {
       const rect = element.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom >= 0) {
+      if (rect.top < window.innerHeight-600 && rect.bottom >= 0) {
         setIsSection3Visible(true); // Floating button visible
       } else {
         setIsSection3Visible(false); // Floating button hidden
@@ -426,8 +426,6 @@ const Index = () => {
         </section>
       </section>
 
-      
-
       <div className={`popup ${isPopupVisible ? "show" : ""}`}>
         <button className="hide-button" onClick={closePopup}>닫기</button>
         <LazyLoadImage src="/images/popup.png" alt="Popup" />
@@ -527,12 +525,11 @@ const Index = () => {
             </div>
             <motion.div
               className="rounded-lg overflow-hidden shadow-xl"
-              initial={{ opacity: 0, x: 50 }} // 오른쪽에서 시작
-              animate={IsSection3Visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }} // 애니메이션
-              transition={{ duration: 1.5 }} // 애니메이션 지속 시간
+              initial={{ opacity: 0, x: 40 }} // 오른쪽에서 시작
+              animate={IsSection3Visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }} // 애니메이션
+              transition={{ duration: 0.8 }} // 애니메이션 지속 시간
             >
               <LazyLoadImage
-                id="your-image-id"
                 src="/images/map.png"
                 alt="Location"
                 className="w-full h-auto"
