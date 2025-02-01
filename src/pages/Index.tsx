@@ -172,7 +172,7 @@ const Index = () => {
   };
 
   const handleScroll3 = () => {
-    const element = document.getElementById('map'); // "section2" 섹션의 ID를 사용, 해당 위치에 스크롤이 도착하면 동작
+    const element = document.getElementById('section3'); // "section2" 섹션의 ID를 사용, 해당 위치에 스크롤이 도착하면 동작
     if (element) {
       const rect = element.getBoundingClientRect();
       if (rect.top < window.innerHeight && rect.bottom >= 0) {
@@ -520,7 +520,6 @@ const Index = () => {
               </p>
             </div>
             <motion.div
-              id = "map"
               className="rounded-lg overflow-hidden shadow-xl"
               initial={{ opacity: 0, x: 40 }} // 오른쪽에서 시작
               animate={IsSection3Visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }} // 애니메이션

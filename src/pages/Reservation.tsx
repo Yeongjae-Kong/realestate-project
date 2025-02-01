@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import reservationImage from '/tab3/reservation.png';
 import './reservation.css';
+import { supabase } from '@/lib/supabase';
 
 const Reservation = () => {
   const [name, setName] = useState("");
@@ -13,7 +14,7 @@ const Reservation = () => {
   const { toast } = useToast();
   const [isPrivacyPolicyVisible, setIsPrivacyPolicyVisible] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !phone) {
       toast({
@@ -23,14 +24,31 @@ const Reservation = () => {
       });
       return;
     }
-    toast({
-      title: "방문예약 완료",
-      description: "담당자가 확인 후 연락드리겠습니다.",
-    });
-    setName("");
-    setPhone("");
+  
+    const { data, error } = await supabase
+      .from("reservations")
+      .insert([{ name, phone, address }]);
+  
+    if (error) {
+      toast({
+        title: "예약 실패",
+        description: "서버 오류가 발생했습니다. 다시 시도해주세요.",
+        variant: "destructive",
+      });
+      console.error("Supabase Error:", error.message);
+    } else {
+      toast({
+        title: "방문예약 완료",
+        description: "담당자가 확인 후 연락드리겠습니다.",
+      });
+  
+      // 입력 필드 초기화
+      setName("");
+      setPhone("");
+      setAddress("");
+    }
   };
-
+  
   return (
     <div className="min-h-screen font-[Pretendard]">
       <Navigation />
