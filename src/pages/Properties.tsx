@@ -1,9 +1,18 @@
 // src/pages/Properties.tsx
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Navigation from "@/components/Navigation";
 
 const Properties = () => {
   const [activeTab, setActiveTab] = useState("community"); // State for active tab
+
+  const preloadImages = ["/tab1/community.png", "/tab1/layout.png"];
+
+  useEffect(() => {
+    preloadImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   return (
     <div className="min-h-screen font-[Pretendard]">
@@ -57,7 +66,7 @@ const Properties = () => {
         <div className="py-20 bg-white">
           <div className="flex justify-center items-center h-full">
             <img
-              src="/tab1/community.png" // 이미지 경로를 여기에 입력하세요
+              src="/tab1/community.png"
               alt=""
               className="max-w-full h-auto rounded-lg shadow-lg"
             />
@@ -68,7 +77,7 @@ const Properties = () => {
         <div className="py-20 bg-white">
           <div className="flex justify-center items-center h-full">
             <img
-              src="/tab1/layout.png" // 이미지 경로를 여기에 입력하세요
+              src="/tab1/layout.png"
               alt=""
               className="max-w-full h-auto rounded-lg shadow-lg"
             />

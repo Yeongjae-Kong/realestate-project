@@ -1,9 +1,19 @@
 // src/pages/Location.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from "@/components/Navigation";
 
 const Location = () => {
   const [activeTab, setActiveTab] = useState("interior"); // State for active tab
+
+  const preloadImages = ["/tab2/interior.png", "/tab2/type.png"];
+
+  useEffect(() => {
+    preloadImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
 
   return (
     <div className="min-h-screen font-[Pretendard]">
@@ -57,7 +67,7 @@ const Location = () => {
         <div className="py-20 bg-white">
           <div className="flex justify-center items-center h-full">
             <img
-              src="/tab2/interior.png" // 이미지 경로를 여기에 입력하세요
+              src="/tab2/interior.png"
               alt=""
               className="max-w-full h-auto rounded-lg shadow-lg"
             />
@@ -68,7 +78,7 @@ const Location = () => {
         <div className="py-20 bg-white">
           <div className="flex justify-center items-center h-full">
             <img
-              src="/tab2/type.png" // 이미지 경로를 여기에 입력하세요
+              src="/tab2/type.png" 
               alt=""
               className="max-w-full h-auto rounded-lg shadow-lg"
             />
