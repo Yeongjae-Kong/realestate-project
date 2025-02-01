@@ -282,11 +282,6 @@ const Index = () => {
     }).open();
   };
 
-  const handleSelectAddress = (selectedAddress) => {
-    setAddress(selectedAddress);
-    setSearchResults([]); // 검색 결과 초기화
-  };
-
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
