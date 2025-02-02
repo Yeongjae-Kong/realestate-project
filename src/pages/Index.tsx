@@ -359,7 +359,7 @@ const Index = () => {
       <section
         id="section1"
         className="py-40 relative"
-        style={{ backgroundImage: "url('/images/222.jpg')", backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}
+        style={{ backgroundImage: "url('/images/bg1.jpg')", backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
         <div className="absolute inset-0 bg-white opacity-30"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
