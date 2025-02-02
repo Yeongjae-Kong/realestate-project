@@ -6,15 +6,15 @@ React와 TypeScript를 기반으로 한 부동산 중개 서비스. Vite를 통�
 
 ## Tech Stack (기술 스택) 🛠
 
-- **Frontend**
+- ### **Frontend**
  - React
  - TypeScript 
  - Vite
 
-- **Backend & Database**
+- ### **Backend & Database**
  - Supabase
    
-- **Deployment**
+- ### **Deployment**
  - Vercel
 
 ## Project Structure (프로젝트 구조) 📁
