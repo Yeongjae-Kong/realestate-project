@@ -443,6 +443,14 @@ const Index = () => {
 
       <div className={`popup ${isPopupVisible ? "show" : ""}`}>
         <button className="hide-button" onClick={closePopup}>닫기</button>
+        <li>
+            <button className="reservation-button" onClick={() => { 
+              handleFloatingButtonClick(); 
+              closePopup(); 
+            }}>
+              방문예약
+            </button>
+        </li>
         <LazyLoadImage src="/images/popup.png" alt="Popup" />
       </div>
 
@@ -554,7 +562,7 @@ const Index = () => {
 
       {/* 방문예약 Section */}
         {/* Visit Reservation Section */}
-        <section id="section4" className="py-20 bg-white">
+        <section id="section4" className="py-40 bg-white">
           <div className="container scale-container mx-auto px-4"> {/* Apply the scale-container class */}
             <div className="max-w-xl mx-auto text-center">
               <img

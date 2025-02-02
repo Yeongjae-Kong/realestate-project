@@ -304,6 +304,26 @@
   text-align: center;
 }
 
+
+.reservation-button {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color:  rgba(155, 17, 30, 0.8);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+.reservation-button:hover {
+  background-color: rgba(155, 17, 30, 0.7);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
 @media (max-width: 767px) {
   .popup {
     width: 80%;
