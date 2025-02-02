@@ -23,13 +23,6 @@ const Reservation = () => {
       return;
     }
   
-    // 전화번호 형식 체크 (정규 표현식: 010-XXXX-XXXX)
-    const phonePattern = /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/;
-    if (!phonePattern.test(phone)) {
-      alert("전화번호 형식(010-XXXX-XXXX)을 맞춰주세요.");
-      return;
-    }
-  
     const { data, error } = await supabase
       .from("reservations")
       .insert([{ name, phone, address }]);
