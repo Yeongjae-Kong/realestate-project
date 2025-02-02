@@ -1,69 +1,41 @@
-# Welcome to your Lovable project
+# Real Estate Platform (부동산 중개 서비스) 🏠
+https://realestate-project-two.vercel.app/
 
-## Project info
+## Introduction (소개)
+React와 TypeScript를 기반으로 한 부동산 중개 서비스. Vite를 통한 개발 환경 구축, vercel을 통한 배포 및 Supabase를 통한 백엔드 서비스 제공
 
-**URL**: https://lovable.dev/projects/2bb8bcc1-a768-49c6-bcf8-80077ab15b37
+## Tech Stack (기술 스택) 🛠
 
-## How can I edit this code?
+- **Frontend**
+ - React
+ - TypeScript 
+ - Vite
 
-There are several ways of editing your application.
+- **Backend & Database**
+ - Supabase
+   
+- **Deployment**
+ - Vercel
 
-**Use Lovable**
+## Project Structure (프로젝트 구조) 📁
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2bb8bcc1-a768-49c6-bcf8-80077ab15b37) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+src/
+├── components/         # 재사용 가능한 컴포넌트
+│   ├── ui/            # UI 공통 컴포넌트
+│   ├── Navigation.tsx # 네비게이션 컴포넌트
+│   └── PropertyCard.tsx # 매물 카드 컴포넌트
+├── hooks/             # 커스텀 훅
+│   ├── use-mobile.tsx # 모바일 환경 감지 훅
+│   └── use-toast.ts   # 토스트 알림 훅
+├── lib/               # 유틸리티 및 설정
+│   ├── supabase.ts    # Supabase 설정
+│   └── utils.ts       # 유틸리티 함수
+└── pages/             # 페이지 컴포넌트
+   ├── Index.tsx      # 메인 페이지
+   ├── Location.tsx   # 탭1, 2, 3
+   ├── Properties.tsx 
+   └── Reservation.tsx
 ```
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2bb8bcc1-a768-49c6-bcf8-80077ab15b37) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+Made with YeongjaeKong
