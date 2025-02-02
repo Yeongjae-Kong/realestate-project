@@ -247,10 +247,10 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   max-width: 100%;
   padding: 10px;
-  transition: transform 1s ease-in-out, opacity 0.5s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.8s ease-in-out;
   
   /* 기본적으로 숨김 (애니메이션 전 이미지 렌더링) */
-  transform: translateX(-30%);
+  transform: translateX(-100%);
   opacity: 0;
 }
 

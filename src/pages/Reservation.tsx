@@ -16,12 +16,17 @@ const Reservation = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone) {
-      toast({
-        title: "입력 오류",
-        description: "성함과 연락처를 모두 입력해주세요.",
-        variant: "destructive",
-      });
+    
+    // 빈 입력값 체크
+    if (!name || !phone || !address) {
+      alert("한글자 이상 입력해주세요.");
+      return;
+    }
+  
+    // 전화번호 형식 체크 (정규 표현식: 010-XXXX-XXXX)
+    const phonePattern = /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/;
+    if (!phonePattern.test(phone)) {
+      alert("전화번호 형식(010-XXXX-XXXX)을 맞춰주세요.");
       return;
     }
   

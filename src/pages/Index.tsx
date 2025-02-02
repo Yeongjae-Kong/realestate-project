@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { FaHome, FaBuilding, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 import '../index.css'; // Ensure this is imported if not already
 import {LazyLoadImage} from 'react-lazy-load-image-component';
+import { supabase } from "@/lib/supabase";
 
 
 const properties = [
@@ -109,23 +110,45 @@ const Index = () => {
     return (index + images.length) % images.length;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone) {
-      toast({
-        title: "입력 오류",
-        description: "성함과 연락처를 모두 입력해주세요.",
-        variant: "destructive",
-      });
+    
+    // 빈 입력값 체크
+    if (!name || !phone || !address) {
+      alert("한글자 이상 입력해주세요.");
       return;
     }
-    toast({
-      title: "방문예약 완료",
-      description: "담당자가 확인 후 연락드리겠습니다.",
-    });
-    setName("");
-    setPhone("");
-  };
+  
+    // 전화번호 형식 체크 (정규 표현식: 010-XXXX-XXXX)
+    const phonePattern = /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/;
+    if (!phonePattern.test(phone)) {
+      alert("전화번호 형식(010-XXXX-XXXX)을 맞춰주세요.");
+      return;
+    }
+  
+    const { data, error } = await supabase
+      .from("reservations")
+      .insert([{ name, phone, address }]);
+  
+    if (error) {
+      toast({
+        title: "예약 실패",
+        description: "서버 오류가 발생했습니다. 다시 시도해주세요.",
+        variant: "destructive",
+      });
+      console.error("Supabase Error:", error.message);
+    } else {
+      toast({
+        title: "방문예약 완료",
+        description: "담당자가 확인 후 연락드리겠습니다.",
+      });
+  
+      // 입력 필드 초기화
+      setName("");
+      setPhone("");
+      setAddress("");
+    }
+  };  
 
   const resetSliderTimer = () => {
     clearInterval(timer); // 기존 타이머 해제
@@ -536,45 +559,48 @@ const Index = () => {
       </section>
 
       {/* 방문예약 Section */}
-      <section id="section4" className="py-60 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl mb-8">방문예약</h2>
-            <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
-              <div>
-                <Input
-                  type="text"
-                  placeholder="성함"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="text-lg"
-                />
-              </div>
-              <div>
-                <Input
-                  type="tel"
-                  placeholder="연락처 (ex. 010-XXXX-XXXX)"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="text-lg"
-                />
-              </div>
-              <div>
-                <div className="flex items-center">
+        {/* Visit Reservation Section */}
+        <section id="section4" className="py-20 bg-white">
+          <div className="container scale-container mx-auto px-4"> {/* Apply the scale-container class */}
+            <div className="max-w-xl mx-auto text-center">
+              <img
+                src="/tab3/reservation.png"
+                alt="Reservation"
+                className="w-full h-auto mb-8 animate-fade-in"
+              />
+              <h2 className="text-3xl md:text-4xl mb-8">방문예약</h2>
+              <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
+                <div>
                   <Input
                     type="text"
-                    id="address"
-                    placeholder="주소"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 text-lg"
-                    required
+                    placeholder="성함"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="text-lg"
                   />
                 </div>
-              </div>
-              <form className="p-2">
-                {/* Personal Information Consent */}
+                <div>
+                  <Input
+                    type="tel"
+                    placeholder="연락처 (ex. 010-XXXX-XXXX)"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="text-lg"
+                  />
+                </div>
+                <div>
+                  <div className="flex items-center">
+                    <Input
+                      type="text"
+                      id="address"
+                      placeholder="주소"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 text-lg"
+                      required
+                    />
+                  </div>
+                </div>
                 <div className="mb-4">
                   <div className="flex items-center">
                     <input
@@ -587,16 +613,11 @@ const Index = () => {
                       개인정보 수집 및 이용 동의 <span className="text-red-600 cursor-pointer" onClick={() => setIsPrivacyPolicyVisible(!isPrivacyPolicyVisible)}>[보기]</span>
                     </label>
                   </div>
-                  <p className="text-black-500">
-                  </p>
                   {isPrivacyPolicyVisible && (
                     <textarea
                       className="mt-1 block w-full border border-black rounded-md p-2"
                       rows={4}
-                      placeholder="회사는 개인정보 보호법 제30조에 따라 정보 주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리지침을 수립, 공개합니다.
-
-제1조 (개인정보의 처리목적)
-회사는 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다."
+                      placeholder="회사는 개인정보 보호법 제30조에 따라 정보 주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리지침을 수립, 공개합니다."
                       readOnly
                     />
                   )}
@@ -610,10 +631,9 @@ const Index = () => {
                   예약하기
                 </button>
               </form>
-            </form>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* 우측 Floating Button */}
       <div className={`floating-button-circle ${isFloatingButtonVisible ? 'fade-in' : 'opacity-0'}`} style={{ transition: 'opacity 1.5s' }}>
