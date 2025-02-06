@@ -142,7 +142,7 @@
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2); /* 노란색 그림자 추가 */
 }
 
-@media (max-width: 767px) { /* 모바일 화면에서 숨기기 */
+@media (max-width: 767px) { /* 모바일 화면에서 작게게 */
   .section1-tag {
     width: 20vw;
     height: 5vh;
@@ -157,7 +157,6 @@
   right: 20px; /* 오른쪽에서 더 왼쪽으로 이동 */
   transform: translateY(-50%);
   z-index: 1000; /* 다른 요소 위에 표시 */
-  display: none; /* 기본적으로 숨김 */
 }
 
 .floating-button ul {
@@ -231,8 +230,12 @@
 }
 
 @media (max-width: 767px) { /* 모바일 화면에서 숨기기 */
+  .floating-button {
+  }
   .floating-button-circle {
-    display: none; /* 숨기기 */
+    top: 50%;
+    right: 0px;
+    scale: 0.6;/* 보이도록 설정 */
   }
 }
 

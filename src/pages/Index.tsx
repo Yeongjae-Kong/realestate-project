@@ -228,7 +228,7 @@ const Index = () => {
     };
   }, []);
 
-  // section 글 애니메이션
+  // section1 글 애니메이션
   useEffect(() => {
     const timeouts = fadeInElements.map((_, index) => {
       return setTimeout(() => {
@@ -284,7 +284,7 @@ const Index = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsFadeIn(true);
-    }, 2000); // 2초 후에 fade-in 시작
+    }, 1000); // 2초 후에 fade-in 시작
 
     return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 정리
   }, []);
