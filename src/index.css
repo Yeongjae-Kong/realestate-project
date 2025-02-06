@@ -233,7 +233,7 @@
   .floating-button {
   }
   .floating-button-circle {
-    top: 50%;
+    top: 40%;
     right: 0px;
     scale: 0.6;/* 보이도록 설정 */
   }
